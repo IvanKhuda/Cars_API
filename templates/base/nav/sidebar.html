@@ -1,0 +1,148 @@
+<div class="flex-shrink-0 p-3 bg-white float-end mt-5" style="width: 280px;">
+  <div class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom" style="">
+      <a class="btn btn-dark text-decoration-none border-bottom" href="{% url 'cars_api:post_create' %}">New post</a>
+    </div>
+  <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+    <span class="fs-5 fw-semibold">Car's view options</span>
+  </a>
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            Show by period
+          </button>
+        </li>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li>
+                <a href="?period=day">Last day</a>
+              </li>
+              <li>
+                <a href="?period=week">Last week</a>
+              </li>
+              <li>
+                <a href="?period=month">Last month</a>
+              </li>
+            </ul>
+          </div>
+      </ul>
+
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            Show by Brand
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              {% for post in posts %}
+              <li>
+                <a href="?brand={{ post.brand }}">{{ post.brand }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            Show by Model
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              {% for post in posts %}
+              <li>
+                <a href="?model={{ post.model }}">{{ post.model }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            Show by Country
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              {% for post in posts %}
+              <li>
+                <a href="?country={{ post.country }}">{{ post.country }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            Show by Fuel
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              {% for post in posts %}
+              <li>
+                <a href="?fuel={{ post.fuel }}">{{ post.fuel }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            Show by Engine
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              {% for post in posts %}
+              <li>
+                <a href="?engine={{ post.engine }}">{{ post.engine }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+            Show by Sale status
+          </button>
+          <div class="collapse show" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              {% for post in posts %}
+              <li>
+                <a href="?on_sale={{ post.on_sale }}">
+                  {% if post.on_sale %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <br>
+</div>
+
+
+
+
+
+
+
+
+
+

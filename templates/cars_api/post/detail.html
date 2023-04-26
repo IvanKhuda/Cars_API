@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ post.brand }} {{ post.model }}
+{% endblock title %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="col-md-8 mx-auto text-center">
+            <h1 class="mb-4">{{ post.brand }} {{ post.model }}</h1>
+        </div>
+        <div class="text-center">
+            <img src="{{ post.image_url }}" alt="" class="img-fluid mx-auto d-block mb-3">
+        </div>
+
+      <div class="card mb-4">
+        <div class="card-body">
+            <p class="card-text mb-auto">Year: {{ post.year }}</p>
+            <p class="card-text mb-auto">Country: {{ post.country }}</p>
+            <p class="card-text mb-auto">Mileage: {{ post.mileage }} km</p>
+            <p class="card-text mb-auto">Fuel: {{ post.fuel }}</p>
+            <p class="card-text mb-auto">Transmission: {{ post.transmission }}</p>
+            <p class="card-text mb-auto">Engine: {{ post.engine }}L</p>
+            <p class="card-text mb-auto">Body stile: {{ post.body_stile }}</p>
+            <p class="card-text mb-auto">Exterior color: {{ post.exterior_color }}</p>
+            <p class="card-text mb-auto">Interior color: {{ post.interior_color }}</p>
+            <p class="card-text mb-auto">On sale:
+                {% if post.on_sale %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}</p>
+            <br>
+            <h3 class="mb-2">{{ post.price }} USD</h3>
+            <a href="#" class="link-blue">Contact owner</a>
+        </div>
+        <div class="card-footer text-muted">
+            <p class="card-text mb-auto">Post ID: {{ post.pk }}</p>
+            <p class="mb-0">@{{ post.owner }} - {{ post.publish|date:"F d, Y" }}</p>
+        </div>
+          <br>
+          <a href="{% url 'cars_api:post_update' pk=post.pk %}" class="card mb-4">
+              <button class="btn btn-info">Edit</button>
+          </a>
+          <a href="{% url 'cars_api:post_delete' pk=post.pk %}" class="card mb-4">
+              <button class="btn btn-danger">Delete</button>
+          </a>
+      </div>
+    </div>
+</div>
+{% endblock content %}
